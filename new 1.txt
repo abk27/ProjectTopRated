@@ -1,0 +1,22 @@
+<form name="rating" method="post" action="rating.php">
+    					5<input type='radio' name='gender' value='male'>
+						4<input type='radio' name='gender' value='male'>
+						3<input type='radio' name='gender' value='male'>
+						2<input type='radio' name='gender' value='male'>
+						1<input type='radio' name='gender' value='male'>
+						<input type='submit' value='Submit'>
+    					</form><button class="w3-btn w3-green">Rate5</button>
+
+
+<div id="look">
+			<ul>
+				<li><input type="file" id="txtFil" >
+					<a href="#" id="anch"><b><span>Upload Photos</span></b></a>
+				</li>
+				
+				<li><input type="file" id="txtFil" >
+					<a href="#" id="anch"><b><span>Upload Videos</span></b></a>
+				</li>
+				</ul>
+				
+				</div>

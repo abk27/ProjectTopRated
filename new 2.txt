@@ -1,0 +1,163 @@
+<?php
+		include 'dbconnect.php'
+		if(isset($_POST['vid']))
+		{
+			$filename= $_FILES['file']['name'];
+			$filetype=$_FILES['file']['type'];
+			if($filetype=='video/*')
+			{
+				move_uploaded_file($_FILES['file'])
+				['tmp_name'],'test_upload/'.$filename);
+				$filepath="test_upload/".$filename;
+				$sql= "insert into posts(upload) values('$filepath')";
+				if(mysqli_query($db_handle,$sql))
+				{
+					echo "succefully uploaded";
+				}
+				else
+				{
+						echo "video.....not";
+				}
+			}
+		
+		}
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Top Rated</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/animate.min.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/lightbox.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+  <link id="css-preset" href="css/presets/preset1.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+  <link rel="shortcut icon" href="images/favicon.ico">
+</head><!--/head-->
+
+<body>
+
+
+
+  <header id="home">
+ <!--/#home-slider-->
+    <div class="main-nav">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">
+				<div class="dropdown">
+					<h1 class="dropbtn"><img class="img-responsive" src="images/logo2.png" alt="logo"></h1>
+						<div class="dropdown-content">
+							<li><img src="images/user1.png" style="width:128px;height:128px;"></img></li>
+								
+							<li>Kirti Bajaj</li>
+							<li>Rating:*****</li>
+						</div>
+					</div>
+          </a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="scroll"><a href="home.html">Home</a></li>
+            <li class="scroll"><a href="leaderboard.html">LeaderBoard</a></li>
+            <li class="scroll"><a href="swot.html">Swot</a></li>
+            <li class="scroll"><a href="contact.html">Contact</a></li>
+            <li class="scroll"><a href="home.html">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div><!--/#main-nav-->
+  </header><!--/#home-->
+<section id="services">
+    <div class="container">
+      <div class="heading wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+        <div class="row">
+          <div class="text-center col-sm-8 col-sm-offset-2">
+            <h2>Upload Your Photo/Video/Audio</h2>
+            <p>Expose the hidden talent in you....</p>
+          </div>
+        </div> 
+      </div>
+      <div class="text-center our-services">
+        <div class="row">
+		<form action="upload_pic.php" method="POST">
+          <div class="col-sm-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <img src="images/p1.png"><br/>
+						<b>Select Category</b></br>
+    					Entertainment<input type='radio' name='cat' value='ent'>
+						Education<input type='radio' name='cat' value='edu'>
+						Sports<input type='radio' name='cat' value='spo'>
+						Social<input type='radio' name='cat' value='soc'>
+						Management<input type='radio' name='cat' value='mgmt'><br/><br/>
+				<button class="w3-btn w3-white" input type="submit" value="Post" >
+	
+					<input type="file" id="imgfile" accept="image/*" name="pic" >
+					<a href="#" id="anch"><b><span>Upload Photo</span></b></a>
+				</button>
+				
+  
+          </div>
+		  </form>
+		  <form action="upload.php" method="POST">
+		  
+          <div class="col-sm-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="550ms">
+            <img src="images/p2.png"><br/>
+				<b>Select Category</b></br>
+    					Entertainment<input type='radio' name='cat' value='ent' >
+						Education<input type='radio' name='cat' value='edu' >
+						Sports<input type='radio' name='cat' value='spo'>
+						Social<input type='radio' name='cat' value='soc'>
+						Management<input type='radio' name='cat' value='mgmt'><br/><br/>
+				<button class="w3-btn w3-white" input type="submit" value="Post" name="vid" >
+	
+					<input type="file" id="vidfile" accept="video/*" name="vid" >
+					<a href="#" id="anch"><b><span>Upload Video</span></b></a>
+				</button>
+             
+            </div>
+			</form>
+			<form action="upload.php" method="POST">
+			 <div class="col-sm-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="550ms">
+            <img src="images/p3.png"><br/>
+			<b>Select Category</b></br>
+    					Entertainment<input type='radio' name='cat' value='ent'>
+						Education<input type='radio' name='cat' value='edu'>
+						Sports<input type='radio' name='cat' value='spo'>
+						Social<input type='radio' name='cat' value='soc'>
+						Management<input type='radio' name='cat' value='mgmt'><br/><br/>
+				<button class="w3-btn w3-white" input type="submit" value="Post"  >
+	
+					<input type="file" id="audfile" accept="audio/*" name="aud" >
+					<a href="#" id="anch"><b><span>Upload Audio</span></b></a>
+				</button>
+             
+            </div>
+		</form>	
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+  </body>
+  </html>
